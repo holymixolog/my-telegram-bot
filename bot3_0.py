@@ -22,6 +22,7 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
+print("BOT_TOKEN из окружения:", os.environ.get("BOT_TOKEN"))  # <-- временный вывод
 
 TOKEN = os.environ.get("BOT_TOKEN")
 if not TOKEN:
