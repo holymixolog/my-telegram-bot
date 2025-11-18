@@ -2,6 +2,7 @@
 # Python 3.10+
 # pip install python-telegram-bot==20.7
 
+import os
 import re
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
@@ -22,7 +23,9 @@ from telegram.ext import (
     filters,
 )
 
-TOKEN = "PASTE_YOUR_TELEGRAM_BOT_TOKEN_HERE"
+TOKEN = os.environ.get("BOT_TOKEN")
+if not TOKEN:
+    raise RuntimeError("Переменная окружения BOT_TOKEN не задана")
 ADMIN_CHAT_ID = 824058186  # твой чат-id
 
 # ----- States -----
@@ -573,7 +576,7 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
     return ConversationHandler.END
 
 def main():
-    app = Application.builder().token("8569675071:AAGt5bzuGzCk1xobCmoa5rdPTjgX_uTEO1U").build()
+    app = Application.builder().token(TOKEN).build()
 
     conv = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
