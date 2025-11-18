@@ -22,11 +22,11 @@ from telegram.ext import (
     MessageHandler,
     filters,
 )
-print("BOT_TOKEN из окружения:", os.environ.get("BOT_TOKEN"))  # <-- временный вывод
+print("MY_BOT_TOKEN из окружения:", os.environ.get("MY_BOT_TOKEN"))  # <-- временный вывод
 
-TOKEN = os.environ.get("BOT_TOKEN")
+TOKEN = os.environ.get("MY_BOT_TOKEN")
 if not TOKEN:
-    raise RuntimeError("Переменная окружения BOT_TOKEN не задана")
+    raise RuntimeError("Переменная окружения MY_BOT_TOKEN не задана")
 ADMIN_CHAT_ID = 824058186  # твой чат-id
 
 # ----- States -----
